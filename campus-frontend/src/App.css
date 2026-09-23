@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #222;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ---------- AUTH ---------- */
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.auth-card {
+  width: 420px;
+  background: white;
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-card label,
+.complaint-form label {
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.auth-card input,
+.complaint-form input,
+.complaint-form textarea,
+.complaint-form select {
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+.auth-card input:focus,
+.complaint-form input:focus,
+.complaint-form textarea:focus,
+.complaint-form select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+button {
+  border: none;
+  border-radius: 7px;
+  padding: 12px 18px;
+  font-size: 15px;
+  background: #2563eb;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: #dc2626;
+  margin-bottom: 15px;
+}
+
+.success {
+  color: #16a34a;
+  margin-top: 15px;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.link-button {
+  background: none;
+  color: #2563eb;
+  padding: 0;
+}
+
+/* ---------- DASHBOARD ---------- */
+
+.dashboard {
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  background: #1e3a8a;
+  color: white;
+  padding: 22px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.dashboard-header p {
+  margin: 7px 0 0;
+  opacity: 0.9;
+}
+
+.dashboard-header button {
+  background: white;
+  color: #1e3a8a;
+  padding: 10px 20px;
+}
+
+/* ---------- CONTENT ---------- */
+
+.dashboard-content {
+  max-width: 1000px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+/* ---------- COMPLAINT FORM ---------- */
+
+.complaint-form,
+.complaints-section {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  margin-bottom: 28px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.complaint-form h2,
+.complaints-section h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.complaint-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.complaint-form textarea {
+  resize: vertical;
+}
+
+/* ---------- COMPLAINT CARDS ---------- */
+
+.complaint-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.complaint-card {
+  border: 1px solid #e1e5eb;
+  border-radius: 10px;
+  padding: 20px;
+  background: #fff;
+}
+
+.complaint-card h3 {
+  margin: 0 0 10px;
+  font-size: 19px;
+}
+
+.complaint-card p {
+  margin: 0 0 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.complaint-details {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  color: #555;
+  font-size: 14px;
+}
+
+/* ---------- ADMIN STATUS ---------- */
+
+.status-controls {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-controls label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.status-controls select {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.status-controls select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+  .dashboard-header {
+    padding: 18px 20px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 20px;
+  }
+
+  .dashboard-content {
+    margin: 20px auto;
+  }
+
+  .complaint-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .status-controls {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
