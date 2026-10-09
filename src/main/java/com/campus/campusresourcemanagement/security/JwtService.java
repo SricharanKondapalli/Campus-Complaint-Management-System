@@ -2,6 +2,7 @@ package com.campus.campusresourcemanagement.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -11,10 +12,10 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    private final String secretKey =
-            "campus-resource-management-secret-key-2026";
+    @Value("${jwt.secret}")
+    private String secretKey;
 
-    private final long expirationTime = 1000 * 60 * 60;
+    private final long expirationTime = 1000L * 60 * 60;
 
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(
