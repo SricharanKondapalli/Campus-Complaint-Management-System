@@ -1,3 +1,4 @@
+
 package com.campus.campusresourcemanagement.controller;
 
 import com.campus.campusresourcemanagement.dto.LoginRequest;
@@ -22,7 +23,6 @@ public class AuthController {
             PasswordEncoder passwordEncoder,
             JwtService jwtService,
             UserService userService) {
-
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
@@ -37,14 +37,12 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest request) {
-
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         if (!passwordEncoder.matches(
                 request.getPassword(),
                 user.getPassword())) {
-
             throw new RuntimeException("Invalid password");
         }
 
