@@ -1,5 +1,8 @@
+
 import { useEffect, useState } from 'react'
 import ComplaintForm from './ComplaintForm'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080'
 
 function Dashboard({ onLogout }) {
     const [complaints, setComplaints] = useState([])
@@ -25,7 +28,7 @@ function Dashboard({ onLogout }) {
         const token = localStorage.getItem('token')
 
         try {
-            const response = await fetch('http://localhost:8080/complaints', {
+            const response = await fetch(`${API_URL}/complaints`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -54,7 +57,7 @@ function Dashboard({ onLogout }) {
 
         try {
             const response = await fetch(
-                `http://localhost:8080/complaints/${complaintId}/status?status=${newStatus}`,
+                `${API_URL}/complaints/${complaintId}/status?status=${newStatus}`,
                 {
                     method: 'PATCH',
                     headers: {
@@ -94,7 +97,6 @@ function Dashboard({ onLogout }) {
             </header>
 
             <main className="dashboard-content">
-
                 {role === 'STUDENT' && (
                     <ComplaintForm onComplaintCreated={fetchComplaints} />
                 )}
@@ -111,23 +113,28 @@ function Dashboard({ onLogout }) {
                     ) : (
                         <div className="complaint-list">
                             {complaints.map((complaint) => (
-                                <div className="complaint-card" key={complaint.id}>
+                                <div
+                                    className="complaint-card"
+                                    key={complaint.id}
+                                >
                                     <h3>{complaint.title}</h3>
 
                                     <p>{complaint.description}</p>
 
                                     <div className="complaint-details">
-                    <span>
-                      <strong>Category:</strong> {complaint.category}
-                    </span>
+                                        <span>
+                                            <strong>Category:</strong>{' '}
+                                            {complaint.category}
+                                        </span>
 
                                         <span>
-                      <strong>Status:</strong> {complaint.status}
-                    </span>
+                                            <strong>Status:</strong>{' '}
+                                            {complaint.status}
+                                        </span>
 
                                         <span>
-                      <strong>ID:</strong> #{complaint.id}
-                    </span>
+                                            <strong>ID:</strong> #{complaint.id}
+                                        </span>
                                     </div>
 
                                     {role === 'ADMIN' && (
@@ -144,8 +151,12 @@ function Dashboard({ onLogout }) {
                                                 }
                                             >
                                                 <option value="OPEN">OPEN</option>
-                                                <option value="IN_PROGRESS">IN_PROGRESS</option>
-                                                <option value="RESOLVED">RESOLVED</option>
+                                                <option value="IN_PROGRESS">
+                                                    IN_PROGRESS
+                                                </option>
+                                                <option value="RESOLVED">
+                                                    RESOLVED
+                                                </option>
                                             </select>
                                         </div>
                                     )}
@@ -154,7 +165,6 @@ function Dashboard({ onLogout }) {
                         </div>
                     )}
                 </section>
-
             </main>
         </div>
     )

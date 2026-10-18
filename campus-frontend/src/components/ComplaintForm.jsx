@@ -1,4 +1,7 @@
+
 import { useState } from 'react'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080'
 
 function ComplaintForm({ onComplaintCreated }) {
     const [title, setTitle] = useState('')
@@ -13,7 +16,7 @@ function ComplaintForm({ onComplaintCreated }) {
         const token = localStorage.getItem('token')
 
         try {
-            const response = await fetch('http://localhost:8080/complaints', {
+            const response = await fetch(`${API_URL}/complaints`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,6 +41,7 @@ function ComplaintForm({ onComplaintCreated }) {
 
             onComplaintCreated()
         } catch (error) {
+            console.error('Error submitting complaint:', error)
             setMessage('Failed to submit complaint.')
         }
     }

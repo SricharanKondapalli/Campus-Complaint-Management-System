@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 
 function Register({ onBackToLogin }) {
@@ -14,7 +15,10 @@ function Register({ onBackToLogin }) {
         setError('')
 
         try {
-            const response = await fetch('http://localhost:8080/auth/register', {
+            const API_URL =
+                import.meta.env.VITE_API_URL || 'http://localhost:8080'
+
+            const response = await fetch(`${API_URL}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +86,10 @@ function Register({ onBackToLogin }) {
 
                 <p className="switch-text">
                     Already have an account?{' '}
-                    <button className="link-button" onClick={onBackToLogin}>
+                    <button
+                        className="link-button"
+                        onClick={onBackToLogin}
+                    >
                         Login
                     </button>
                 </p>
