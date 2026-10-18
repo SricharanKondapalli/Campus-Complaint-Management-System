@@ -1,3 +1,4 @@
+
 package com.campus.campusresourcemanagement.config;
 
 import org.springframework.context.annotation.Bean;
@@ -13,11 +14,13 @@ public class CorsConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
-
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(
-                List.of("http://localhost:5173")
+                List.of(
+                        "http://localhost:5173",
+                        "https://campus-complaint-management-system-nine.vercel.app"
+                )
         );
 
         configuration.setAllowedMethods(
@@ -31,17 +34,12 @@ public class CorsConfig {
                 )
         );
 
-        configuration.setAllowedHeaders(
-                List.of("*")
-        );
+        configuration.setAllowedHeaders(List.of("*"));
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
 
-        source.registerCorsConfiguration(
-                "/**",
-                configuration
-        );
+        source.registerCorsConfiguration("/**", configuration);
 
         return source;
     }
